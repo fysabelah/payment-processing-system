@@ -3,7 +3,7 @@ package com.customers.management.system.customersmicroservice.interfaceadapters.
 import org.springframework.stereotype.Component;
 
 @Component
-public class clienteController {
+public class ClienteController {
 
 
 

@@ -15,7 +15,10 @@ public class Cliente implements Serializable {
     private static final long serialVersionUID=1;
 
     @Id
-    private String documento;
+    private Integer Id;
+
+    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
+    private List<ClienteDocumento> clienteDocumentos;
 
     @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
     private List<ClienteEndereco> enderecos;

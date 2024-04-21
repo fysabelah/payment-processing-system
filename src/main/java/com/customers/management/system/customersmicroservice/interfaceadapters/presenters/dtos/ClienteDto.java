@@ -1,10 +1,8 @@
 package com.customers.management.system.customersmicroservice.interfaceadapters.presenters.dtos;
 
-import com.customers.management.system.customersmicroservice.entities.ClienteEndereco;
 import com.customers.management.system.customersmicroservice.util.enums.TipoPagamento;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import io.swagger.v3.oas.annotations.media.Schema;
-import jakarta.persistence.Column;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -18,9 +16,10 @@ import java.util.List;
 @AllArgsConstructor
 @JsonIgnoreProperties({"id"})
 
-public class clienteDto extends Dto implements Serializable {
-
+public class ClienteDto extends Dto implements Serializable {
     private List<ClienteEnderecoDto> clienteEnderecosDto;
+
+    private List<ClienteDocumentoDto> clienteDocumentosDto;
 
     @NotEmpty
     @Schema(example = "PIX")
@@ -41,7 +40,5 @@ public class clienteDto extends Dto implements Serializable {
     @NotEmpty
     @Schema(example = "True")
     private boolean ativo;
-
-
 
 }

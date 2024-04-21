@@ -3,7 +3,7 @@ package com.customers.management.system.customersmicroservice.interfaceadapters.
 import org.springframework.stereotype.Service;
 
 @Service
-public class clienteGateway {
+public class ClienteGateway {
 
 
 }
