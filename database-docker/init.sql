@@ -1,1 +1,1 @@
-CREATE DATABASE costumers-fiap-fase04;
+CREATE DATABASE costumer-microservice-test;
