@@ -7,7 +7,14 @@ Este repositório refere-se ao microsserviço de pedidos. No total, o projeto en
 3. Pedido
 4. Logística
 
-5. Este microsserviço é responsável por cadastrar informações dos clientes, poderemos incluir novos clientes, alterar e desativar.
+# Principais recursos deste microserviço
+
+Responsável por cadastrar informações dos clientes, assim será possível:
+* Incluir novos clientes;
+* Alterar informações;
+* Desativar um cliente (Manterá o histórico somente mas não será possível realizar ações);
+* Consultar todos os clientes;
+* Consultar clientes por status (ativo/inativo);
 
 ## Tecnologias
 
