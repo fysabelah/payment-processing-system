@@ -2,15 +2,10 @@ package com.customers.management.system.customersmicroservice.interfaceadapters.
 
 import com.customers.management.system.customersmicroservice.entities.ClienteDocumento;
 import com.customers.management.system.customersmicroservice.interfaceadapters.presenters.dtos.ClienteDocumentoDto;
-import jakarta.annotation.Resource;
 import org.springframework.stereotype.Component;
 
 @Component
 public class ClienteDocumentoPresenter implements Presenter<ClienteDocumento, ClienteDocumentoDto> {
-
-    @Resource
-    private ClientePresenter clientePresenter;
-
     @Override
     public ClienteDocumentoDto convert(ClienteDocumento entitie){
 
@@ -20,8 +15,6 @@ public class ClienteDocumentoPresenter implements Presenter<ClienteDocumento, Cl
 
         dto.setDocumento(entitie.getDocumento());
         dto.setTipoDocumentoCliente(entitie.getTipoDocumentoCliente());
-
-        dto.setClienteDto(this.clientePresenter.convert(entitie.getCliente()));
 
         return dto;
     }
@@ -35,8 +28,6 @@ public class ClienteDocumentoPresenter implements Presenter<ClienteDocumento, Cl
 
         entitie.setDocumento(dto.getDocumento());
         entitie.setTipoDocumentoCliente(dto.getTipoDocumentoCliente());
-
-        entitie.setCliente(this.clientePresenter.convert(dto.getClienteDto()));
 
         return entitie;
     }

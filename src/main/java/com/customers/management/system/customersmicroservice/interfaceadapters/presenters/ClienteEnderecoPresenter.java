@@ -2,12 +2,9 @@ package com.customers.management.system.customersmicroservice.interfaceadapters.
 
 import com.customers.management.system.customersmicroservice.entities.ClienteEndereco;
 import com.customers.management.system.customersmicroservice.interfaceadapters.presenters.dtos.ClienteEnderecoDto;
-import jakarta.annotation.Resource;
 import org.springframework.stereotype.Component;
 @Component
 public class ClienteEnderecoPresenter implements Presenter<ClienteEndereco, ClienteEnderecoDto> {
-    @Resource
-    private ClientePresenter clientePresenter;
 
     @Override
     public ClienteEnderecoDto convert(ClienteEndereco entitie){
@@ -24,8 +21,6 @@ public class ClienteEnderecoPresenter implements Presenter<ClienteEndereco, Clie
         dto.setEstado(entitie.getEstado());
         dto.setComplemento(entitie.getComplemento());
         dto.setCep(entitie.getCep());
-
-        dto.setClienteDto(this.clientePresenter.convert(entitie.getCliente()));
 
         return dto;
     }
@@ -44,9 +39,6 @@ public class ClienteEnderecoPresenter implements Presenter<ClienteEndereco, Clie
         entitie.setComplemento(dto.getComplemento());
         entitie.setCep(dto.getCep());
 
-        entitie.setCliente(this.clientePresenter.convert(dto.getClienteDto()));
-
         return entitie;
-
     }
 }

@@ -16,7 +16,11 @@ public class ClienteDocumentoDto extends Dto implements Serializable {
     private Integer id;
 
     @NotEmpty
-    private ClienteDto clienteDto;
     private TipoDocumentoCliente tipoDocumentoCliente;
+
+    @NotEmpty
     private String documento;
+    //private ClienteDto clienteDto;
+
+
 }

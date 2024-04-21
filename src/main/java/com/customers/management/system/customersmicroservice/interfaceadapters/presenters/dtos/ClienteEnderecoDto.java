@@ -18,7 +18,7 @@ public class ClienteEnderecoDto extends Dto implements Serializable {
     private TipoEndereco tipoEndereco;
 
     @NotEmpty
-    private ClienteDto clienteDto;
+    //private ClienteDto clienteDto;
     private String logradouro;
     private String numero;
     private String bairro;

@@ -19,7 +19,7 @@ public class ClienteDocumento implements Serializable {
     private Integer id;
 
     @ManyToOne
-    @JoinColumn(name = "cliente_id")
+    @JoinColumn(name = "clienteId")
     private Cliente cliente;
 
     @Column

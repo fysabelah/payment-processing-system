@@ -17,28 +17,27 @@ import java.util.List;
 @JsonIgnoreProperties({"id"})
 
 public class ClienteDto extends Dto implements Serializable {
-    private List<ClienteEnderecoDto> clienteEnderecosDto;
-
-    private List<ClienteDocumentoDto> clienteDocumentosDto;
-
-    @NotEmpty
-    @Schema(example = "PIX")
-    private TipoPagamento tipoPagamentoPreferencial;
-
     @NotEmpty
     @Schema(example = "João das Couves")
     private String nome;
 
     @NotEmpty
-    @Schema(example = "george@mail.com.br")
-    private String email;
-
-    @NotEmpty
-    @Schema(example = "11980809090")
-    private String telefone;
-
-    @NotEmpty
     @Schema(example = "True")
     private boolean ativo;
 
+    @NotEmpty
+    @Schema(example = "joaoCouves@provedormail.com")
+    private String email;
+
+    @NotEmpty
+    @Schema(example = "99999999999")
+    private String telefone;
+
+    @NotEmpty
+    @Schema(example = "PIX")
+    private TipoPagamento tipoPagamentoPreferencial;
+
+    private List<ClienteEnderecoDto> clienteEnderecosDto;
+
+    private List<ClienteDocumentoDto> clienteDocumentosDto;
 }

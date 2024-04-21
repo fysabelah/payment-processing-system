@@ -40,3 +40,4 @@ build/
 ### ARQUIVOS QUE É SEGURO NÃO DISPONIBILIZAR NO GITHUB
 ### FILES NOT SAFE TO BE AVAILABLE ON GITHUB
 ./database-docker/docker-compose-database-password
+./database-docker/postgres-data

@@ -17,12 +17,6 @@ public class Cliente implements Serializable {
     @Id
     private Integer Id;
 
-    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
-    private List<ClienteDocumento> clienteDocumentos;
-
-    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
-    private List<ClienteEndereco> enderecos;
-
     @Column
     private TipoPagamento tipoPagamentoPreferencial;
 
@@ -37,5 +31,12 @@ public class Cliente implements Serializable {
 
     @Column
     private boolean ativo;
+
+    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
+    private List<ClienteDocumento> clienteDocumentos;
+
+    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
+    private List<ClienteEndereco> enderecos;
+
 
 }
