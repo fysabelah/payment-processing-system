@@ -57,12 +57,12 @@ public class ClienteController {
         // atribuir o cliente no documento e também no endereço- por algum motivo não está salvando o id do cliente
         for (ClienteDocumento documento : cliente.getClienteDocumentos()){
             documento.setCliente(cliente);
-            documento = this.clienteDocumentoGateway.insert(documento);
+            this.clienteDocumentoGateway.insert(documento);
         }
 
         for (ClienteEndereco endereco : cliente.getEnderecos()){
             endereco.setCliente(cliente);
-            endereco = this.clienteEnderecoGateway.insert(endereco);
+            this.clienteEnderecoGateway.insert(endereco);
         }
 
         return this.clienteConverter.convert(cliente);
