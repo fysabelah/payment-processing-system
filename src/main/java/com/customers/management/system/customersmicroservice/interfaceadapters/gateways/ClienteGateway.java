@@ -13,9 +13,6 @@ public class ClienteGateway {
     @Resource
     private ClienteRepository clienteRepository;
 
-    @Resource
-    private ClienteDocumentoGateway clienteDocumentoGateway;
-
     public Cliente insert(Cliente cliente){
         return this.clienteRepository.save(cliente);
     }
