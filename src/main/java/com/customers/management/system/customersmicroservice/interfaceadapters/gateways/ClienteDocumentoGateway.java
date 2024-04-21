@@ -15,4 +15,8 @@ public class ClienteDocumentoGateway {
     public ClienteDocumento findByDocumentoAndTipoDocumentoCliente(String documento, TipoDocumentoCliente tipoDocumentoCliente){
         return this.clienteDocumentoRepository.findByDocumentoAndTipoDocumentoCliente(documento,tipoDocumentoCliente);
     }
+
+    public ClienteDocumento insert(ClienteDocumento clienteDocumento){
+        return this.clienteDocumentoRepository.save(clienteDocumento);
+    }
 }

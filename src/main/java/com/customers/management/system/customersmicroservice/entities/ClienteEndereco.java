@@ -8,17 +8,16 @@ import java.io.Serializable;
 
 @Data
 @Entity
-@Table(name="clienteEndereco")
+@Table
 public class ClienteEndereco implements Serializable {
 
     private static final long serialVersionUID = 1;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column
     private Integer id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "cliente_id")
     private Cliente cliente;
 

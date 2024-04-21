@@ -5,16 +5,18 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
 @Entity
-@Table(name = "cliente")
+@Table
 public class Cliente implements Serializable {
 
     private static final long serialVersionUID=1;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer Id;
 
     @Column
@@ -32,11 +34,10 @@ public class Cliente implements Serializable {
     @Column
     private boolean ativo;
 
-    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
-    private List<ClienteDocumento> clienteDocumentos;
+    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<ClienteDocumento> clienteDocumentos = new ArrayList<ClienteDocumento>();
 
-    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
-    private List<ClienteEndereco> enderecos;
-
+    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<ClienteEndereco> enderecos = new ArrayList<ClienteEndereco>();
 
 }
