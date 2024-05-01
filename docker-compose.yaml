@@ -1,0 +1,17 @@
+services:
+  order-management-gateway:
+    image: order-management-gateway:1.0.0
+    build:
+      dockerfile: Dockerfile
+    container_name: gateway
+    ports:
+      - 7071:7071
+    restart: unless-stopped
+    networks:
+      - gateway-network
+    environment:
+      EUREKA_SERVER: ${EUREKA_SERVER}
+networks:
+  gateway-network:
+    external: true
+    name: order-management-network
