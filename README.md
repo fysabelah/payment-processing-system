@@ -22,3 +22,10 @@ Responsável por cadastrar informações dos clientes, assim será possível:
 * Spring Data JPA para manipulação de dados dos clientes
 * Spring Cloud Stream para comunicação baseada em eventos com outros microsserviços
 * PostgreSQL para persistência 
+
+## Desenvolvedores
+
+- [Aydan Amorim](https://github.com/AydanAmorim)
+- [Danilo Faccio](https://github.com/DFaccio)
+- [Erick Ribeiro](https://github.com/erickmatheusribeiro)
+- [Isabela França](https://github.com/fysabelah)
