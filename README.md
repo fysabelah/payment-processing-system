@@ -2,11 +2,7 @@
 
 Este é responsável por administrar os endpoints dos serviços.
 
-1. [Cliente](https://github.com/AydanAmorim/costumers-microservice)
-2. [Pedido](https://github.com/fysabelah/ordering-microservice)
-3. Produto
-4. [Logística](https://github.com/erickmatheusribeiro/tracking-microservice)
-5. [Registro e descoberta de serviços](https://github.com/fysabelah/registration-discovery-services-order-management)
+Caso não deseje executar o [projeto completo](https://github.com/fysabelah/order-management-system), é interessante que ao menos tenha o [registro e descoberta de serviços](https://github.com/fysabelah/registration-discovery-services-order-management).
 
 ## Como configurar
 
