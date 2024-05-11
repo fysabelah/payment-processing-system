@@ -28,16 +28,22 @@ public class ClienteGateway {
         return this.clienteRepository.save(clienteToDisable);
     }
     public Cliente enableCliente( Integer id) throws ValidationsException {
-        Cliente clienteToDisable = this.findById(id);
+        Cliente clienteToEnable = this.findById(id);
 
-        clienteToDisable.setAtivo(false);
+        clienteToEnable.setAtivo(false);
 
-        return this.clienteRepository.save(clienteToDisable);
+        return this.clienteRepository.save(clienteToEnable);
     }
 
     public Cliente findById(Integer id) throws ValidationsException {
         return this.clienteRepository.findById(id)
                 .orElseThrow(() -> new ValidationsException("0001", "Cliente"));
+    }
+
+    public Cliente findByDocument(String document) throws ValidationsException{
+        return this.clienteRepository.findClienteByClienteDocumentosDocumento(document)
+                .orElseThrow(() -> new ValidationsException("0001", "Cliente"));
+
     }
 
     public Page<Cliente> findAll(Pageable pageable){

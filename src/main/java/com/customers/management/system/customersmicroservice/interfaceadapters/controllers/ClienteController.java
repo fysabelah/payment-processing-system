@@ -2,9 +2,7 @@ package com.customers.management.system.customersmicroservice.interfaceadapters.
 
 import com.customers.management.system.customersmicroservice.entities.Cliente;
 import com.customers.management.system.customersmicroservice.entities.ClienteDocumento;
-import com.customers.management.system.customersmicroservice.entities.ClienteEndereco;
 import com.customers.management.system.customersmicroservice.interfaceadapters.gateways.ClienteDocumentoGateway;
-import com.customers.management.system.customersmicroservice.interfaceadapters.gateways.ClienteEnderecoGateway;
 import com.customers.management.system.customersmicroservice.interfaceadapters.gateways.ClienteGateway;
 import com.customers.management.system.customersmicroservice.interfaceadapters.presenters.ClientePresenter;
 import com.customers.management.system.customersmicroservice.interfaceadapters.presenters.dtos.ClienteDto;
@@ -32,38 +30,19 @@ public class ClienteController {
     @Resource
     private ClienteDocumentoGateway clienteDocumentoGateway;
 
-    @Resource
-    private ClienteEnderecoGateway clienteEnderecoGateway;
-
-
     public ClienteDto insert(ClienteDto clienteDto) throws ValidationsException{
         Cliente cliente = this.clienteConverter.convert(clienteDto);
         ClienteDocumento clienteDocumento;
 
-        // Lógica para não duplicar o documento para algum cliente
-        for (ClienteDocumento documento : cliente.getClienteDocumentos()){
-            clienteDocumento = this.clienteDocumentoGateway.findByDocumentoAndTipoDocumentoCliente(
-                    documento.getDocumento(),
-                    documento.getTipoDocumentoCliente()
-            );
+        for (ClienteDocumento documento : cliente.getClienteDocumentos()) {
+            clienteDocumento = this.clienteDocumentoGateway.findByDocumentoAndTipoDocumentoCliente(documento.getDocumento(),
+                                                                                                    documento.getTipoDocumentoCliente());
 
-            if (clienteDocumento != null && clienteDocumento.getId() != null){
-                this.clienteBusiness.create(cliente);
-            }
+            this.clienteBusiness.create(cliente, clienteDocumento);
+
         }
 
         cliente = this.clienteGateway.insert(cliente);
-
-        // atribuir o cliente no documento e também no endereço- por algum motivo não está salvando o id do cliente
-        for (ClienteDocumento documento : cliente.getClienteDocumentos()){
-            documento.setCliente(cliente);
-            this.clienteDocumentoGateway.insert(documento);
-        }
-
-        for (ClienteEndereco endereco : cliente.getEnderecos()){
-            endereco.setCliente(cliente);
-            this.clienteEnderecoGateway.insert(endereco);
-        }
 
         return this.clienteConverter.convert(cliente);
     }
@@ -83,6 +62,27 @@ public class ClienteController {
     }
 
 
+    public ClienteDto findByDocument(String document) throws ValidationsException{
+        Cliente cliente = this.clienteGateway.findByDocument(document);
+
+        return this.clienteConverter.convert(cliente);
+    }
+
+    public void disable(Integer id) throws ValidationsException{
+
+        Cliente cliente = this.clienteGateway.findById(id);
+        cliente.setAtivo(false);
+        this.clienteGateway.update(cliente);
+
+    }
+
+    public void enable(Integer id) throws ValidationsException{
+
+        Cliente cliente = this.clienteGateway.findById(id);
+        cliente.setAtivo(true);
+        this.clienteGateway.update(cliente);
+
+    }
 
 
 }

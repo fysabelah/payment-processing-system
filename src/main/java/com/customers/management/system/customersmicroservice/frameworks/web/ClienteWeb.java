@@ -39,6 +39,14 @@ public class ClienteWeb {
         return ResponseEntity.ok(this.clienteController.findById(idCliente));
     }
 
+    @Operation(summary = "Consultar um Cliente por documento")
+    @GetMapping(value = "/document/{document}")
+    public ResponseEntity<ClienteDto> findById(@Parameter(description = "Informe o documento do Cliente", example = "99999999")
+                                               @PathVariable String document) throws ValidationsException {
+
+        return ResponseEntity.ok(this.clienteController.findByDocument(document));
+    }
+
     @Operation(summary = "Incluir informações de um cliente")
     @PostMapping
     public ResponseEntity<ClienteDto> insert(@RequestBody ClienteDto clienteDto) throws ValidationsException {
@@ -46,6 +54,27 @@ public class ClienteWeb {
 
         return ResponseEntity.ok(clienteDtoSalvo);
     }
+
+    @Operation(summary= "Desativa o cadastro do cliente")
+    @PutMapping(value = "/disable/{idCliente}")
+    public ResponseEntity<String> desativar(@Parameter(description = "Informe o ID do Cliente", example = "4")
+                                                      @PathVariable Integer idCliente) throws ValidationsException {
+
+        this.clienteController.disable(idCliente);
+
+        return ResponseEntity.ok("Cliente desabilitado");
+    }
+
+    @Operation(summary= "Reativa o cadastro do cliente")
+    @PutMapping(value = "/enable/{idCliente}")
+    public ResponseEntity<String> ativar(@Parameter(description = "Informe o ID do Cliente", example = "4")
+                                              @PathVariable Integer idCliente) throws ValidationsException {
+
+        this.clienteController.enable(idCliente);
+
+        return ResponseEntity.ok("Cliente reativado");
+    }
+
 
 
 
