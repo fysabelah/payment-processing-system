@@ -14,7 +14,7 @@ import java.util.List;
 @NoArgsConstructor
 @Data
 @AllArgsConstructor
-@JsonIgnoreProperties({"id"})
+//@JsonIgnoreProperties({"id"})
 
 public class ClienteDto extends Dto implements Serializable {
     @NotEmpty

@@ -68,7 +68,21 @@ public class ClienteController {
         return this.clienteConverter.convert(cliente);
     }
 
+    public void disable(Integer id) throws ValidationsException{
 
+        Cliente cliente = this.clienteGateway.findById(id);
+        cliente.setAtivo(false);
+        this.clienteGateway.update(cliente);
+
+    }
+
+    public void enable(Integer id) throws ValidationsException{
+
+        Cliente cliente = this.clienteGateway.findById(id);
+        cliente.setAtivo(true);
+        this.clienteGateway.update(cliente);
+
+    }
 
 
 }

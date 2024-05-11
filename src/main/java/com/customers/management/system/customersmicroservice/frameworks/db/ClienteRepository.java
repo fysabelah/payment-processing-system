@@ -11,8 +11,4 @@ public interface ClienteRepository extends JpaRepository<Cliente, Integer> {
 
     Optional<Cliente> findClienteByClienteDocumentosDocumento(String documento);
 
-
-
-
-
 }
