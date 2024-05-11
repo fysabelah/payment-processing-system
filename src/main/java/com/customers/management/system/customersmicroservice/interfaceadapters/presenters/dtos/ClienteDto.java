@@ -1,7 +1,6 @@
 package com.customers.management.system.customersmicroservice.interfaceadapters.presenters.dtos;
 
 import com.customers.management.system.customersmicroservice.util.enums.TipoPagamento;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
@@ -14,8 +13,6 @@ import java.util.List;
 @NoArgsConstructor
 @Data
 @AllArgsConstructor
-//@JsonIgnoreProperties({"id"})
-
 public class ClienteDto extends Dto implements Serializable {
     @NotEmpty
     @Schema(example = "João das Couves")
