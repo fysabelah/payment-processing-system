@@ -2,9 +2,7 @@ package com.customers.management.system.customersmicroservice.interfaceadapters.
 
 import com.customers.management.system.customersmicroservice.entities.Cliente;
 import com.customers.management.system.customersmicroservice.entities.ClienteDocumento;
-import com.customers.management.system.customersmicroservice.entities.ClienteEndereco;
 import com.customers.management.system.customersmicroservice.interfaceadapters.gateways.ClienteDocumentoGateway;
-import com.customers.management.system.customersmicroservice.interfaceadapters.gateways.ClienteEnderecoGateway;
 import com.customers.management.system.customersmicroservice.interfaceadapters.gateways.ClienteGateway;
 import com.customers.management.system.customersmicroservice.interfaceadapters.presenters.ClientePresenter;
 import com.customers.management.system.customersmicroservice.interfaceadapters.presenters.dtos.ClienteDto;
@@ -31,10 +29,6 @@ public class ClienteController {
 
     @Resource
     private ClienteDocumentoGateway clienteDocumentoGateway;
-
-    @Resource
-    private ClienteEnderecoGateway clienteEnderecoGateway;
-
 
     public ClienteDto insert(ClienteDto clienteDto) throws ValidationsException{
         Cliente cliente = this.clienteConverter.convert(clienteDto);

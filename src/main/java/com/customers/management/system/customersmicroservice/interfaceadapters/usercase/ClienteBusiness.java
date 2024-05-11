@@ -3,8 +3,6 @@ package com.customers.management.system.customersmicroservice.interfaceadapters.
 import com.customers.management.system.customersmicroservice.entities.Cliente;
 import com.customers.management.system.customersmicroservice.entities.ClienteDocumento;
 import com.customers.management.system.customersmicroservice.util.exception.ValidationsException;
-import jakarta.validation.Validation;
-import org.antlr.v4.runtime.atn.SemanticContext;
 import org.springframework.stereotype.Component;
 
 @Component
