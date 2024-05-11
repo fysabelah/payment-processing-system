@@ -44,19 +44,6 @@ public class ClienteController {
 
         cliente = this.clienteGateway.insert(cliente);
 
-        /*
-            PEDIR AJUDA IZA, NÃO ESTÁ PREENCHENDO O ID DO CLIENTE NAS TABELAS DE DOCUMENTOS E ENDERECOS
-        for (ClienteDocumento documento : cliente.getClienteDocumentos()){
-            documento.setCliente(cliente);
-            this.clienteDocumentoGateway.insert(documento);
-        }
-
-        for (ClienteEndereco endereco : cliente.getEnderecos()){
-        endereco.setCliente(cliente);
-            this.clienteEnderecoGateway.insert(endereco);
-        }
-        */
-
         return this.clienteConverter.convert(cliente);
     }
 
@@ -70,6 +57,13 @@ public class ClienteController {
 
     public ClienteDto findById(Integer id) throws ValidationsException{
         Cliente cliente = this.clienteGateway.findById(id);
+
+        return this.clienteConverter.convert(cliente);
+    }
+
+
+    public ClienteDto findByDocument(String document) throws ValidationsException{
+        Cliente cliente = this.clienteGateway.findByDocument(document);
 
         return this.clienteConverter.convert(cliente);
     }

@@ -40,6 +40,12 @@ public class ClienteGateway {
                 .orElseThrow(() -> new ValidationsException("0001", "Cliente"));
     }
 
+    public Cliente findByDocument(String document) throws ValidationsException{
+        return this.clienteRepository.findClienteByClienteDocumentosDocumento(document)
+                .orElseThrow(() -> new ValidationsException("0001", "Cliente"));
+
+    }
+
     public Page<Cliente> findAll(Pageable pageable){
         return this.clienteRepository.findAll(pageable);
     }
