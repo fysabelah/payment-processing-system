@@ -40,30 +40,28 @@ public class ClienteController {
         Cliente cliente = this.clienteConverter.convert(clienteDto);
         ClienteDocumento clienteDocumento;
 
-        // Lógica para não duplicar o documento para algum cliente
-        for (ClienteDocumento documento : cliente.getClienteDocumentos()){
-            clienteDocumento = this.clienteDocumentoGateway.findByDocumentoAndTipoDocumentoCliente(
-                    documento.getDocumento(),
-                    documento.getTipoDocumentoCliente()
-            );
+        for (ClienteDocumento documento : cliente.getClienteDocumentos()) {
+            clienteDocumento = this.clienteDocumentoGateway.findByDocumentoAndTipoDocumentoCliente(documento.getDocumento(),
+                                                                                                    documento.getTipoDocumentoCliente());
 
-            if (clienteDocumento != null && clienteDocumento.getId() != null){
-                this.clienteBusiness.create(cliente);
-            }
+            this.clienteBusiness.create(cliente, clienteDocumento);
+
         }
 
         cliente = this.clienteGateway.insert(cliente);
 
-        // atribuir o cliente no documento e também no endereço- por algum motivo não está salvando o id do cliente
+        /*
+            PEDIR AJUDA IZA, NÃO ESTÁ PREENCHENDO O ID DO CLIENTE NAS TABELAS DE DOCUMENTOS E ENDERECOS
         for (ClienteDocumento documento : cliente.getClienteDocumentos()){
             documento.setCliente(cliente);
             this.clienteDocumentoGateway.insert(documento);
         }
 
         for (ClienteEndereco endereco : cliente.getEnderecos()){
-            endereco.setCliente(cliente);
+        endereco.setCliente(cliente);
             this.clienteEnderecoGateway.insert(endereco);
         }
+        */
 
         return this.clienteConverter.convert(cliente);
     }

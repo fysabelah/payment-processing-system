@@ -19,7 +19,8 @@ public class Cliente implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer Id;
 
-    @Column
+    //@Column
+    @Enumerated(value=EnumType.STRING)
     private TipoPagamento tipoPagamentoPreferencial;
 
     @Column
@@ -34,10 +35,29 @@ public class Cliente implements Serializable {
     @Column
     private boolean ativo;
 
-    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<ClienteDocumento> clienteDocumentos = new ArrayList<ClienteDocumento>();
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name="cliente_id")
+    private List<ClienteDocumento> clienteDocumentos;
 
-    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<ClienteEndereco> enderecos = new ArrayList<ClienteEndereco>();
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name="cliente_id")
+    private List<ClienteEndereco> enderecos;
+
+    public List<ClienteDocumento> getClienteDocumentos(){
+        if (this.clienteDocumentos==null){
+            return new ArrayList<>();
+        }
+        return clienteDocumentos;
+    }
+
+    public List<ClienteEndereco> getClienteEnderecos(){
+
+        if (this.getClienteEnderecos()==null){
+            return new ArrayList<>();
+        }
+
+        return getClienteEnderecos();
+
+    }
 
 }

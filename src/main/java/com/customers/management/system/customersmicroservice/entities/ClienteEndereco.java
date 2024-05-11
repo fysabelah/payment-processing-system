@@ -17,11 +17,10 @@ public class ClienteEndereco implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "cliente_id")
+    @ManyToOne(cascade = CascadeType.ALL)
     private Cliente cliente;
 
-    @Column
+    @Enumerated(value = EnumType.STRING)
     private TipoEndereco tipoEndereco;
 
     @Column

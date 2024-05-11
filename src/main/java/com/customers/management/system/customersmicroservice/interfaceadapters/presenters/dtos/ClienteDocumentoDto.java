@@ -2,6 +2,7 @@ package com.customers.management.system.customersmicroservice.interfaceadapters.
 
 import com.customers.management.system.customersmicroservice.util.enums.TipoDocumentoCliente;
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -15,12 +16,9 @@ public class ClienteDocumentoDto extends Dto implements Serializable {
     @NotEmpty
     private Integer id;
 
-    @NotEmpty
+    @NotNull
     private TipoDocumentoCliente tipoDocumentoCliente;
 
     @NotEmpty
     private String documento;
-    //private ClienteDto clienteDto;
-
-
 }

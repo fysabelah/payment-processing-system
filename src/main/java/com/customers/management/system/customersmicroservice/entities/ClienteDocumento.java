@@ -17,11 +17,11 @@ public class ClienteDocumento implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "cliente_id")
+    @ManyToOne(cascade = CascadeType.ALL)
     private Cliente cliente;
 
-    @Column
+    //@Column
+    @Enumerated(value = EnumType.STRING)
     private TipoDocumentoCliente tipoDocumentoCliente;
 
     @Column

@@ -37,7 +37,9 @@ public class ClienteDto extends Dto implements Serializable {
     @Schema(example = "PIX")
     private TipoPagamento tipoPagamentoPreferencial;
 
+    @NotEmpty
     private List<ClienteEnderecoDto> clienteEnderecosDto;
 
+    @NotEmpty
     private List<ClienteDocumentoDto> clienteDocumentosDto;
 }

@@ -28,11 +28,11 @@ public class ClienteGateway {
         return this.clienteRepository.save(clienteToDisable);
     }
     public Cliente enableCliente( Integer id) throws ValidationsException {
-        Cliente clienteToDisable = this.findById(id);
+        Cliente clienteToEnable = this.findById(id);
 
-        clienteToDisable.setAtivo(false);
+        clienteToEnable.setAtivo(false);
 
-        return this.clienteRepository.save(clienteToDisable);
+        return this.clienteRepository.save(clienteToEnable);
     }
 
     public Cliente findById(Integer id) throws ValidationsException {
