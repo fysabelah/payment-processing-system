@@ -14,4 +14,4 @@ services:
 networks:
   gateway-network:
     external: true
-    name: order-management-network
+    name: management-network
