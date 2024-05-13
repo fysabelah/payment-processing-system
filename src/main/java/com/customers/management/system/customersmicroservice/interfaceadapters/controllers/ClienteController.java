@@ -16,8 +16,11 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
 public class ClienteController {
+
     @Resource
     private ClientePresenter clienteConverter;
 
@@ -30,17 +33,16 @@ public class ClienteController {
     @Resource
     private ClienteDocumentoGateway clienteDocumentoGateway;
 
-    public ClienteDto insert(ClienteDto clienteDto) throws ValidationsException{
+    public ClienteDto insert(ClienteDto clienteDto) throws ValidationsException {
         Cliente cliente = this.clienteConverter.convert(clienteDto);
-        ClienteDocumento clienteDocumento;
 
-        for (ClienteDocumento documento : cliente.getClienteDocumentos()) {
-            clienteDocumento = this.clienteDocumentoGateway.findByDocumentoAndTipoDocumentoCliente(documento.getDocumento(),
-                                                                                                    documento.getTipoDocumentoCliente());
+        List<String> documents = cliente.getDocumentos()
+                .stream()
+                .map(ClienteDocumento::getDocumento).toList();
 
-            this.clienteBusiness.create(cliente, clienteDocumento);
+        List<Cliente> clientsSaved = clienteGateway.findAllByDocuments(documents);
 
-        }
+        this.clienteBusiness.validateCreation(clientsSaved);
 
         cliente = this.clienteGateway.insert(cliente);
 
@@ -55,34 +57,32 @@ public class ClienteController {
         return this.clienteConverter.convert(clientes);
     }
 
-    public ClienteDto findById(Integer id) throws ValidationsException{
+    public ClienteDto findById(Integer id) {
         Cliente cliente = this.clienteGateway.findById(id);
 
         return this.clienteConverter.convert(cliente);
     }
 
 
-    public ClienteDto findByDocument(String document) throws ValidationsException{
+    public ClienteDto findByDocument(String document) {
         Cliente cliente = this.clienteGateway.findByDocument(document);
 
         return this.clienteConverter.convert(cliente);
     }
 
-    public void disable(Integer id) throws ValidationsException{
-
+    public ClienteDto disable(Integer id) {
         Cliente cliente = this.clienteGateway.findById(id);
-        cliente.setAtivo(false);
-        this.clienteGateway.update(cliente);
 
+        cliente = this.clienteGateway.disable(cliente);
+
+        return this.clienteConverter.convert(cliente);
     }
 
-    public void enable(Integer id) throws ValidationsException{
-
+    public ClienteDto enable(Integer id) {
         Cliente cliente = this.clienteGateway.findById(id);
-        cliente.setAtivo(true);
-        this.clienteGateway.update(cliente);
 
+        cliente = this.clienteGateway.enable(cliente);
+
+        return this.clienteConverter.convert(cliente);
     }
-
-
 }
