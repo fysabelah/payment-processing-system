@@ -29,7 +29,7 @@ public class ClientePresenter implements Presenter<Cliente, ClienteDto> {
         dto.setTipoPagamentoPreferencial(entitie.getTipoPagamentoPreferencial());
 
         dto.setClienteEnderecosDto(this.clienteEnderecoPresenter.convertEntity(entitie.getEnderecos()));
-        dto.setClienteDocumentosDto(this.clienteDocumentoPresenter.convertEntity(entitie.getClienteDocumentos()));
+        dto.setClienteDocumentosDto(this.clienteDocumentoPresenter.convertEntity(entitie.getDocumentos()));
 
 
         return dto;
@@ -48,7 +48,7 @@ public class ClientePresenter implements Presenter<Cliente, ClienteDto> {
         entitie.setTipoPagamentoPreferencial(dto.getTipoPagamentoPreferencial());
 
         entitie.setEnderecos(this.clienteEnderecoPresenter.convertDtos(dto.getClienteEnderecosDto()));
-        entitie.setClienteDocumentos(this.clienteDocumentoPresenter.convertDtos(dto.getClienteDocumentosDto()));
+        entitie.setDocumentos(this.clienteDocumentoPresenter.convertDtos(dto.getClienteDocumentosDto()));
 
         return entitie;
     }

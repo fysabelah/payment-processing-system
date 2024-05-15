@@ -2,7 +2,9 @@ package com.customers.management.system.customersmicroservice.entities;
 
 import com.customers.management.system.customersmicroservice.util.enums.TipoPagamento;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -11,19 +13,20 @@ import java.util.List;
 @Data
 @Entity
 @Table
+@AllArgsConstructor
+@NoArgsConstructor
 public class Cliente implements Serializable {
 
-    private static final long serialVersionUID=1;
+    private static final long serialVersionUID = 1;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer Id;
+    private Integer id;
 
-    //@Column
-    @Enumerated(value=EnumType.STRING)
+    @Enumerated(value = EnumType.STRING)
     private TipoPagamento tipoPagamentoPreferencial;
 
-    @Column
+    @Column(nullable = false)
     private String nome;
 
     @Column
@@ -32,32 +35,30 @@ public class Cliente implements Serializable {
     @Column
     private String telefone;
 
-    @Column
+    @Column(nullable = false)
     private boolean ativo;
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name="cliente_id")
-    private List<ClienteDocumento> clienteDocumentos;
+    @JoinColumn(name = "cliente_id")
+    private List<ClienteDocumento> documentos;
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name="cliente_id")
+    @JoinColumn(name = "cliente_id")
     private List<ClienteEndereco> enderecos;
 
-    public List<ClienteDocumento> getClienteDocumentos(){
-        if (this.clienteDocumentos==null){
-            return new ArrayList<>();
-        }
-        return clienteDocumentos;
-    }
-
-    public List<ClienteEndereco> getClienteEnderecos(){
-
-        if (this.getClienteEnderecos()==null){
+    public List<ClienteDocumento> getDocumentos() {
+        if (this.documentos == null) {
             return new ArrayList<>();
         }
 
-        return getClienteEnderecos();
-
+        return documentos;
     }
 
+    public List<ClienteEndereco> getEnderecos() {
+        if (this.enderecos == null) {
+            return new ArrayList<>();
+        }
+
+        return enderecos;
+    }
 }

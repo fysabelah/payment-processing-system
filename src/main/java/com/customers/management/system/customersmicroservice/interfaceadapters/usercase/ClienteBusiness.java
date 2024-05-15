@@ -5,6 +5,8 @@ import com.customers.management.system.customersmicroservice.entities.ClienteDoc
 import com.customers.management.system.customersmicroservice.util.exception.ValidationsException;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
 public class ClienteBusiness {
 
@@ -38,4 +40,9 @@ public class ClienteBusiness {
 
     }
 
+    public void validateCreation(List<Cliente> clientesDocumentos) throws ValidationsException {
+        if (clientesDocumentos != null && !clientesDocumentos.isEmpty()) {
+            throw new ValidationsException("0103");
+        }
+    }
 }

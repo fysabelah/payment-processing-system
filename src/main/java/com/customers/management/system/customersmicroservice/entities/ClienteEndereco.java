@@ -2,13 +2,17 @@ package com.customers.management.system.customersmicroservice.entities;
 
 import com.customers.management.system.customersmicroservice.util.enums.TipoEndereco;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 
 @Data
 @Entity
 @Table
+@AllArgsConstructor
+@NoArgsConstructor
 public class ClienteEndereco implements Serializable {
 
     private static final long serialVersionUID = 1;
@@ -16,9 +20,6 @@ public class ClienteEndereco implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-
-    @ManyToOne(cascade = CascadeType.ALL)
-    private Cliente cliente;
 
     @Enumerated(value = EnumType.STRING)
     private TipoEndereco tipoEndereco;
