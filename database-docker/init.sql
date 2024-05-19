@@ -1,1 +1,1 @@
-CREATE DATABASE costumer-microservice-test;
+CREATE DATABASE costumermicroservicetest
