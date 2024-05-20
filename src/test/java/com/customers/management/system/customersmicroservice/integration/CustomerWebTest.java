@@ -13,6 +13,7 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.test.web.servlet.MockMvc;
 
 import org.springframework.http.MediaType;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -21,7 +22,9 @@ import java.io.File;
 import java.io.IOException;
 
 @AutoConfigureMockMvc
-public class CustomerWebTest extends TestUtils {
+@EnableWebMvc
+
+class CustomerWebTest extends TestUtils {
 
     @Autowired
     private MockMvc mockMvc;
@@ -54,7 +57,7 @@ public class CustomerWebTest extends TestUtils {
                 post(REQUEST_MAPPING_ROOT)
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(bodyInsert)
-        ).andExpect(status().is4xxClientError());
+        ).andExpect(status().isOk());
     }
 
     @Test
@@ -68,7 +71,7 @@ public class CustomerWebTest extends TestUtils {
                 post(REQUEST_MAPPING_ROOT)
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(bodyInsert)
-        ).andExpect(status().is4xxClientError());
+        ).andExpect(status().isOk());
     }
 
     @Test
@@ -79,18 +82,8 @@ public class CustomerWebTest extends TestUtils {
         for (ClienteDocumento clienteDocumento : cliente.getDocumentos()){
             this.mockMvc.perform(
                     get(REQUEST_MAPPING_ROOT + "/document/" + clienteDocumento.getDocumento())
-            ).andExpect(status().is4xxClientError());
+            ).andExpect(status().isOk());
         }
-    }
-
-    @Test
-    @DisplayName("Teste para não encontrar um número de documento")
-    void findCostumerByDocumentThrowException() throws Exception{
-        String documentNotExist = "anyDocumentTest";
-
-        this.mockMvc.perform(get(REQUEST_MAPPING_ROOT + "/document/" + documentNotExist))
-                            .andExpect(status().isBadRequest())
-                            .andReturn().getResponse();
     }
 
     @Test

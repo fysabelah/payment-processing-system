@@ -1,16 +1,20 @@
 package com.customers.management.system.customersmicroservice.utils;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import com.customers.management.system.customersmicroservice.CustomersMicroserviceApplication;
 import jakarta.annotation.Resource;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.mock.web.MockHttpServletResponse;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.MOCK, classes = CustomersMicroserviceApplication.class)
@@ -37,4 +41,9 @@ public class TestUtils {
             throw new RuntimeException("Não foi possível converter o objeto!", e);
         }
     }
+
+    protected Object getResponseBody(MockHttpServletResponse response, Class<?> type) throws JsonProcessingException, UnsupportedEncodingException {
+        return objectMapper.readValue(response.getContentAsString(StandardCharsets.UTF_8), type);
+    }
+
 }
