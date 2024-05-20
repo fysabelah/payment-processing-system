@@ -28,6 +28,8 @@ Também será necessário remover as configurações de network e adicionar a co
 A partir do registro no [Registro e descoberta de serviços](https://github.com/fysabelah/registration-discovery-services-order-management) todos acessos 
 aos métodos será feito a partir do gateway.
 
+      OBS.: Isto se o acesso aos outros serviços estiverem bloqueados. Do contrário, será possível acessar pelo serviço e pelo gateway.
+
 Portanto, para testes, considerando que está sendo executando localmente, isso inclui containes locais, seria:
 
    http://localhost:7071/${nome_serviço}/${resto_da_url_definida_no_request_mapping}
