@@ -42,7 +42,7 @@ public class ClienteController {
 
         List<Cliente> clientsSaved = clienteGateway.findAllByDocuments(documents);
 
-        this.clienteBusiness.validateCreation(clientsSaved);
+        this.clienteBusiness.validateCreation(cliente, clientsSaved);
 
         cliente = this.clienteGateway.insert(cliente);
 

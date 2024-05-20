@@ -11,13 +11,12 @@ import java.util.List;
 public class ClienteBusiness {
 
     public void create(Cliente cliente, ClienteDocumento clienteDocumento) throws ValidationsException{
-        // Lógica para não duplicar o documento para algum cliente
-        if (clienteDocumento != null && clienteDocumento.getId() != null){
 
-            if ( clienteDocumento.getDocumento() != null && clienteDocumento.getDocumento().isEmpty() ){
-                throw new ValidationsException("0002");
-            }
+        if (clienteDocumento == null || clienteDocumento.getDocumento().isEmpty()){
+            throw new ValidationsException("0002");
+        }
 
+        if (clienteDocumento.getId() != null){
             throw new ValidationsException("0100");
         }
     }
@@ -40,9 +39,14 @@ public class ClienteBusiness {
 
     }
 
-    public void validateCreation(List<Cliente> clientesDocumentos) throws ValidationsException {
+    public void validateCreation(Cliente cliente, List<Cliente> clientesDocumentos) throws ValidationsException {
+        if (cliente.getDocumentos() == null || cliente.getDocumentos().isEmpty() ){
+            throw new ValidationsException("0002");
+        }
+
         if (clientesDocumentos != null && !clientesDocumentos.isEmpty()) {
             throw new ValidationsException("0103");
         }
     }
+
 }
