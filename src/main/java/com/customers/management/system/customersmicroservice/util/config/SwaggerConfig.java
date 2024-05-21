@@ -17,6 +17,7 @@ public class SwaggerConfig {
                                 .title("Customer Management System")
                                 .description("Microservice to management customers - FIAP Fase 04")
                                 .version("1.0.0")
-                ).addServersItem(new Server().url("http://localhost:7071/order-management-system/customers-microservice"));
+                ).addServersItem(new Server().url("http://localhost:7071/order-management-system/customers-microservice"))
+                .addServersItem(new Server().url("http://localhost:7076"));
     }
 }
