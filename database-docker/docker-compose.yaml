@@ -1,10 +1,10 @@
-version: '3'
+version: '3.8'
 
 services:
   local-postgres-compose:
     image: postgres
     environment:
-      - POSTGRES_PASSWORD=admin
+      - POSTGRES_PASSWORD=${POSTGRESSAFE_PASSWORD}
     ports:
       - "5432:5432"
     volumes:
