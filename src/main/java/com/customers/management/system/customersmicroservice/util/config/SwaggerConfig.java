@@ -9,6 +9,8 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class SwaggerConfig {
 
+    private static final String GATEWAY_URL = "http://localhost:7071/order-management-system/customers-microservice";
+
     @Bean
     public OpenAPI apiDocConfig() {
         return new OpenAPI()
@@ -17,7 +19,6 @@ public class SwaggerConfig {
                                 .title("Customer Management System")
                                 .description("Microservice to management customers - FIAP Fase 04")
                                 .version("1.0.0")
-                ).addServersItem(new Server().url("http://localhost:7071/order-management-system/customers-microservice"))
-                .addServersItem(new Server().url("http://localhost:7076"));
+                ).addServersItem(new Server().url(GATEWAY_URL));
     }
 }
