@@ -11,6 +11,10 @@ services:
       - gateway-network
     environment:
       EUREKA_SERVER: ${EUREKA_SERVER}
+      CUSTOMER_ADDRESS: ${CUSTOMER_ADDRESS}
+      ORDER_ADDRESS: ${ORDER_ADDRESS}
+      LOGISTICS_ADDRESS: ${LOGISTICS_ADDRESS}
+      INVENTORY_ADDRESS: ${INVENTORY_ADDRESS}
 networks:
   gateway-network:
     external: true
