@@ -3,7 +3,7 @@
 #
 FROM maven:3.9.6-amazoncorretto-21 AS build
 
-WORKDIR /order-management
+WORKDIR /gateway
 
 COPY pom.xml .
 RUN mvn -B dependency:go-offline
@@ -16,10 +16,10 @@ RUN mvn -B package -DskipTests
 #
 FROM amazoncorretto:21-alpine-jdk
 
-WORKDIR /order-management
+WORKDIR /gateway
 
-COPY --from=build /order-management/target/*.jar ./order-management-gateway.jar
+COPY --from=build /gateway/target/*.jar ./gateway.jar
 
 EXPOSE 7071
 
-ENTRYPOINT ["java","-jar","order-management-gateway.jar"]
+ENTRYPOINT ["java","-jar","gateway.jar"]

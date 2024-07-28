@@ -1,4 +1,4 @@
-package com.order.management.system.gateway.config.log;
+package com.system.config;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
