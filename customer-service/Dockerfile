@@ -20,6 +20,6 @@ WORKDIR /customer
 
 COPY --from=build /customer/target/*.jar ./customer-service.jar
 
-EXPOSE 7076
+EXPOSE 7073
 
 ENTRYPOINT ["java","-jar","customer-service.jar"]
