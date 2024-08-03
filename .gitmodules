@@ -4,3 +4,9 @@
 [submodule "authentication-service"]
 	path = authentication-service
 	url = https://github.com/AydanAmorim/Hackaton-Users.git
+[submodule "card-service"]
+	path = card-service
+	url = https://github.com/erickmatheusribeiro/card-service.git
+[submodule "payment-service"]
+	path = payment-service
+	url = https://github.com/DFaccio/payment-service.git
