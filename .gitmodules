@@ -1,3 +1,6 @@
 [submodule "discovery-services"]
 	path = discovery-services
 	url = https://github.com/fysabelah/discovery-services.git
+[submodule "authentication-service"]
+	path = authentication-service
+	url = https://github.com/AydanAmorim/Hackaton-Users.git

@@ -1,0 +1,3 @@
+CREATE DATABASE clients;
+
+CREATE DATABASE users;
