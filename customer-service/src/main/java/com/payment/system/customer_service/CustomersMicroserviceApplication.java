@@ -7,11 +7,11 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 
 @SpringBootApplication
 @EnableDiscoveryClient
-@EnableFeignClients
+@EnableFeignClients(basePackages = "com.payment.system.customer_service.frameworks.web")
 public class CustomersMicroserviceApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(CustomersMicroserviceApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(CustomersMicroserviceApplication.class, args);
+    }
 
 }
