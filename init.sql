@@ -1,3 +1,7 @@
 CREATE DATABASE clients;
 
 CREATE DATABASE users;
+
+CREATE DATABASE cards;
+
+CREATE DATABASE payments;
