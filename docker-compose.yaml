@@ -1,0 +1,114 @@
+services:
+  # PostgreSQL
+  postgres:
+    image: postgres:16.0
+    container_name: postgres
+    restart: unless-stopped
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+      - payment-system-postgres:/var/lib/postgresql/data
+    networks:
+      - payment-system-network
+    environment:
+      POSTGRES_PASSWORD: ${POSTGRES_DATABASE_PASSWORD}
+      POSTGRES_USER: ${POSTGRES_DATABASE_USERNAME}
+    ports:
+      - 6062:5432
+
+  # Interface para Postgres
+  pgadmin:
+    image: dpage/pgadmin4:8.0
+    container_name: pgadmin
+    volumes:
+      - ./servers.json:/pgadmin4/servers.json
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD}
+    ports:
+      - 6063:80
+    depends_on:
+      - postgres
+    networks:
+      - payment-system-network
+
+  # Registro e descoberta de serviços
+  server-discovery:
+    image: payment-system-registry:1.0.0
+    build:
+      context: ./discovery-services
+    container_name: server-discovery
+    ports:
+      - 7070:7070
+    restart: unless-stopped
+    networks:
+      - payment-system-network
+
+  # Gateway
+  gateway:
+    image: payment-system-gateway:1.0.0
+    build:
+      context: ./gateway-with-authentication
+    container_name: gateway
+    ports:
+      - 7071:7071
+    restart: unless-stopped
+    networks:
+      - payment-system-network
+    environment:
+      EUREKA_SERVER: ${EUREKA_SERVER}
+      CUSTOMER_ADDRESS: ${CUSTOMER_ADDRESS}
+      AUTHENTICATION_ADDRESS: ${AUTHENTICATION_ADDRESS}
+      CARD_ADDRESS: ${CARD_ADDRESS}
+      PAYMENT_ADDRESS: ${PAYMENT_ADDRESS}
+      JWT_SERVER: ${JWT_SERVER}
+    depends_on:
+      - server-discovery
+      - authentication-service
+
+  # API de autenticação
+  authentication-service:
+    image: payment-system-authentication-service:1.0.0
+    build:
+      context: ./authentication-service
+    container_name: authentication-service
+    expose:
+      - "7072"
+    networks:
+      - payment-system-network
+    environment:
+      PROFILE: prod
+      DATABASE_HOST: postgres
+      DATABASE_NAME: users
+      DATABASE_USERNAME: ${POSTGRES_DATABASE_USERNAME}
+      DATABASE_PASSWORD: ${POSTGRES_DATABASE_PASSWORD}
+      SWAGGER_SERVER: http://localhost:7071/api
+    depends_on:
+      - server-discovery
+      - postgres
+
+  # API de clientes
+  customer-service:
+    image: payment-system-client-service:1.0.0
+    build:
+      context: ./customer-service
+    container_name: customer-service
+    expose:
+      - "7073"
+    networks:
+      - payment-system-network
+    environment:
+      PROFILE: prod
+      SWAGGER_SERVER_ADDRESS: http://localhost:7071/api
+      DATABASE_HOST: postgres
+      DATABASE: clients
+      DATABASE_USERNAME: ${POSTGRES_DATABASE_USERNAME}
+      DATABASE_PASSWORD: ${POSTGRES_DATABASE_PASSWORD}
+    depends_on:
+      - server-discovery
+      - postgres
+
+networks:
+  payment-system-network:
+
+volumes:
+  payment-system-postgres:
