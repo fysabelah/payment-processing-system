@@ -37,7 +37,11 @@ public class RoutesConfig {
     @Bean
     public RouteLocator custom(RouteLocatorBuilder routeLocatorBuilder) {
         return routeLocatorBuilder.routes()
-                .route("authentication", r -> createRoute(r, basePath + "/autentica", authenticationUri))
+                .route("authentication-api",  r -> createRoute(r, basePath + "/autenticacao", authenticationUri))
+                .route("authentication-api-users", r -> r.path(basePath + "/usuarios/**")
+                        .filters(f-> f.stripPrefix(1))
+                        .uri(authenticationUri)
+                )
                 .route("customer", r -> createRoute(r, basePath + "/cliente", customerUri))
                 .route("card", r -> createRoute(r, basePath + "/cartao", cardUri))
                 .route("payment", r -> createRoute(r, basePath + "/pagamentos", paymentUri))
@@ -52,7 +56,7 @@ public class RoutesConfig {
 
         return route.path(path + "/**")
                 .and().not(p -> p.path(documentationsEndpoint))
-                .filters(f -> f.stripPrefix(2))
+                .filters(f -> f.stripPrefix(1))
                 .uri(uri);
     }
 
@@ -61,7 +65,7 @@ public class RoutesConfig {
         RouteLocatorBuilder.Builder routesBuilder = routeLocatorBuilder.routes();
 
         Map<String, Map<String, String>> pathBaseRoute = Map.of(
-                "authentication", Map.of("path", basePath + "/autentica", "uri", authenticationUri),
+                "authentication", Map.of("path", basePath + "/autenticacao", "uri", authenticationUri),
                 "client", Map.of("path", basePath + "/cliente", "uri", customerUri),
                 "card", Map.of("path", basePath + "/cartao", "uri", cardUri),
                 "payment", Map.of("path", basePath + "/pagamentos", "uri", paymentUri)

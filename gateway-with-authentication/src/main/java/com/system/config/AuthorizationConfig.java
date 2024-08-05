@@ -19,8 +19,8 @@ import org.springframework.web.cors.reactive.UrlBasedCorsConfigurationSource;
 public class AuthorizationConfig {
 
     private static final String[] AUTH_WHITELIST_DOCUMENTATION = {
-            "/api/autentica/documentation/**",
-            "/api/autentica/doc/**",
+            "/api/autenticacao/documentation/**",
+            "/api/autenticacao/doc/**",
             "/api/cliente/documentation/**",
             "/api/cliente/doc/**",
             "/api/cartao/documentation/**",
@@ -40,6 +40,7 @@ public class AuthorizationConfig {
                 .securityContextRepository(NoOpServerSecurityContextRepository.getInstance())
                 .authorizeExchange(exchanges -> exchanges
                         .pathMatchers(AUTH_WHITELIST_DOCUMENTATION).permitAll()
+                        .pathMatchers(HttpMethod.POST, "/api/autenticacao/**").permitAll()
                         .anyExchange().authenticated()
                 )
                 .oauth2ResourceServer(oauth2 -> oauth2.jwt(
