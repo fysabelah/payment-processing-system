@@ -4,10 +4,10 @@
 
 Este repositório refere-se ao microsserviço de clientes. No total, o projeto envolve 4 microsserviços, sendo eles:
 
-1. Geração de Tokens JWT
+1. [Geração de Tokens JWT](https://github.com/AydanAmorim/Hackaton-Users/tree/main)
 2. **Cliente** *(este)*
-2. Cartão
-3. Pagamentos
+3. [Cartão](https://github.com/erickmatheusribeiro/card-service)
+4. [Pagamentos](https://github.com/DFaccio/payment-service)
 
 Também temos o [Gateway](https://github.com/fysabelah/payment-processing-system/tree/main/gateway-with-authentication) e
 o [Registro de Serviços](https://github.com/fysabelah/discovery-services/tree/main).
@@ -55,7 +55,7 @@ PROFILE=dev
 SWAGGER_SERVER_ADDRESS=http://localhost:7073
 
 DATABASE_USERNAME=postgres
-DATABASE_PASSWORD=I@MR00T
+DATABASE_PASSWORD=i@mr00t
 DATABASE_HOST=localhost:6062
 DATABASE=clients
 ```
