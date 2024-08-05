@@ -80,7 +80,9 @@ JWT_SERVER=authentication-service:7072
 ```
 
 Por fim, execute o comando abaixo para criar os containers. Sugiro criar o container e caso deseje utilizar um container
-local, seria apenas parar o container.
+local, seria apenas parar o container. 
+
+**Obs.:** Caso queria executar algum serviço local, no README.md de cada serviço, há explicação sobre suas chaves e como preenchê-las para tal.
 
 ```
 docker compose up
