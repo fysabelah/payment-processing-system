@@ -1,0 +1,15 @@
+{
+  "id": 26,
+  "name": "Teste teste",
+  "document": "458.965.987-89",
+  "email": "email@email.com",
+  "cellphone": "40028922",
+  "address": {
+    "id": 1,
+    "street": "Rua",
+    "city": "Cidade",
+    "state": "Estado",
+    "country": "Pais",
+    "zipCode": "78956-895"
+  }
+}
