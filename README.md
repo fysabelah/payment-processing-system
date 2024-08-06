@@ -129,7 +129,7 @@ Todos os serviços possuem rotas de documentação. Estas seguem abaixo.
 * Json: http://localhost:7071/api/cliente/documentation
 * Swagger-UI: http://localhost:7071/api/cliente/doc/customer.html
 
-### _Cliente_
+### _Pagamento_
 
 * Json: http://localhost:7071/api/pagamentos/documentation
 * Swagger-UI: http://localhost:7071/api/pagamentos/doc/payment.html
