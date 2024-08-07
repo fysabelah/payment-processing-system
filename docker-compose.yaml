@@ -107,6 +107,50 @@ services:
       - server-discovery
       - postgres
 
+  # API de clientes
+  card-service:
+    image: payment-system-card-service:1.0.0
+    build:
+      context: ./card-service
+    container_name: card-service
+    expose:
+      - "7074"
+    networks:
+      - payment-system-network
+    environment:
+      PROFILE: prod
+      SWAGGER_SERVER_ADDRESS: http://localhost:7071/api
+      DATABASE_HOST: postgres
+      DATABASE: cards
+      DATABASE_USERNAME: ${POSTGRES_DATABASE_USERNAME}
+      DATABASE_PASSWORD: ${POSTGRES_DATABASE_PASSWORD}
+    depends_on:
+      - server-discovery
+      - postgres
+
+  # API de clientes
+  payment-service:
+    image: payment-system-payment-service:1.0.0
+    build:
+      context: ./payment-service
+    container_name: payment-service
+    expose:
+      - "7075"
+    networks:
+      - payment-system-network
+    environment:
+      PROFILE: prod
+      SWAGGER_SERVER_ADDRESS: http://localhost:7071/api
+      DATABASE_HOST: postgres
+      DATABASE: payments
+      DATABASE_USERNAME: ${POSTGRES_DATABASE_USERNAME}
+      DATABASE_PASSWORD: ${POSTGRES_DATABASE_PASSWORD}
+      CARD_ADDRESS: ${CARD_ADDRESS}
+    depends_on:
+      - server-discovery
+      - postgres
+      - card-service
+
 networks:
   payment-system-network:
 
