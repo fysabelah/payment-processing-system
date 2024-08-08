@@ -48,6 +48,8 @@ Este repositório agrupa o desafio final da Pós-Graduação em Arquitetura e De
       * Incluir novos cartões;
       * Consultar saldos dos cartões;
       * Incluir novas movimentações;
+    * O usuário **sudosu**, com CPF _57386600054_, possui o cartão com número _5100643631709388_, validade _0625_ e código de verificação _145_.
+    * O usuário **adj2**, com CPF _47792626903_, possui o cartão com número _3726388357554552_, validade _0932_ e código de verificação _245_.
 
 ## Como executar
 
