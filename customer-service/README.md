@@ -75,7 +75,7 @@ Lembrando que os valores serão alterados quando o projeto é executado por comp
 
 Caso esteja executando apenas este projeto, o Swagger estará disponível em:
 
-* http://localhost:7073/doc
+* http://localhost:7073/documentation
 * http://localhost:7073/doc/customer.html
 
 Neste, você encontrará as informações de payload, metódos, retornos, status code e seus significados.
