@@ -1,8 +1,9 @@
-package com.payment.system.customer_service.interfaceadapters.presenters;
+package com.payment.system.customer_service.unit.interfaceadapters.presenters;
 
 import com.payment.system.customer_service.TestUtils;
-import com.payment.system.customer_service.entities.Address;
 import com.payment.system.customer_service.entities.Client;
+import com.payment.system.customer_service.interfaceadapters.presenters.AddressPresenter;
+import com.payment.system.customer_service.interfaceadapters.presenters.ClientPresenter;
 import com.payment.system.customer_service.interfaceadapters.presenters.dtos.ClientDto;
 import com.payment.system.customer_service.interfaceadapters.presenters.dtos.CreateClientDto;
 import org.junit.jupiter.api.BeforeAll;
@@ -14,7 +15,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class ClientPresenterTest extends TestUtils {
 
-    private static final String BASE_PATH = "src/test/java/com/payment/system/customer_service/interfaceadapters/presenters/mocks/client/";
+    private static final String BASE_PATH = "src/test/java/com/payment/system/customer_service/unit/interfaceadapters/presenters/mocks/client/";
 
     private static ClientPresenter presenter;
 

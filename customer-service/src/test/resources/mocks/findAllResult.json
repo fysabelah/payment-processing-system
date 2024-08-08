@@ -1,0 +1,54 @@
+{
+  "page": {
+    "page": 0,
+    "pageSize": 10,
+    "totalPages": 1
+  },
+  "data": [
+    {
+      "id": 1,
+      "name": "Teste teste",
+      "document": "458.965.987-89",
+      "email": "email@email.com",
+      "cellphone": "40028922",
+      "address": {
+        "id": 1,
+        "street": "Rua",
+        "city": "Cidade",
+        "state": "Estado",
+        "country": "Pais",
+        "zipCode": "78956-895"
+      }
+    },
+    {
+      "id": 2,
+      "name": "Teste 2",
+      "document": "458.965.987-87",
+      "email": "email2@email.com",
+      "cellphone": "40028922",
+      "address": {
+        "id": 2,
+        "street": "Rua",
+        "city": "Cidade",
+        "state": "Estado",
+        "country": "Pais",
+        "zipCode": "78956-895"
+      }
+    },
+    {
+      "id": 3,
+      "name": "Teste 3",
+      "document": "458.965.987-84",
+      "email": "email6@email.com",
+      "cellphone": "40028922",
+      "address": {
+        "id": 3,
+        "street": "Rua",
+        "city": "Cidade",
+        "state": "Estado",
+        "country": "Pais",
+        "zipCode": "78956-895"
+      }
+    }
+  ]
+}

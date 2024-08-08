@@ -32,8 +32,8 @@ public class ExceptionHandlerUtil {
 
         StandardError error = new StandardError(status.value(),
                 "Bloqueado por regra de negócio",
-                request.getRequestURI(),
-                e.getMessage());
+                e.getMessage(),
+                request.getRequestURI());
 
         return ResponseEntity.status(status).body(error);
     }
@@ -45,8 +45,8 @@ public class ExceptionHandlerUtil {
 
         StandardError error = new StandardError(status.value(),
                 "Não encontrado",
-                request.getRequestURI(),
-                e.getMessage()
+                e.getMessage(),
+                request.getRequestURI()
         );
 
         return ResponseEntity.status(status).body(error);

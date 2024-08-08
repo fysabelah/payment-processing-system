@@ -81,3 +81,9 @@ Caso esteja executando apenas este projeto, o Swagger estará disponível em:
 Neste, você encontrará as informações de payload, metódos, retornos, status code e seus significados.
 
       Caso esteja executando o projeto por completo, a documentação é acessada através do Gateway, desta forma, verifique o README.md do projeto completo.
+
+## Cobertura de Teste com JaCoCo
+
+Alcançando um total de 88% de cobertura incluindo teste de unidade e integração.
+
+<img src ="cobertura.png">

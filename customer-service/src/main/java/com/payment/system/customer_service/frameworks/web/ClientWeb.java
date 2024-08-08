@@ -34,7 +34,7 @@ public class ClientWeb {
     }
 
     @Operation(summary = "Consultar um por documento")
-    @GetMapping(value = "/{document}", produces = "application/json")
+    @GetMapping(value = "/document/{document}", produces = "application/json")
     public ResponseEntity<ClientDto> findByDocument(@Parameter(description = "Documento do cliente", example = "11111100059")
                                                     @PathVariable String document) {
         return ResponseEntity.ok(controller.findByDocument(document));

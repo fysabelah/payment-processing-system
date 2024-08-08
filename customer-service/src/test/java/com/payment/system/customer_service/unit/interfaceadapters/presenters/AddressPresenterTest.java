@@ -1,7 +1,8 @@
-package com.payment.system.customer_service.interfaceadapters.presenters;
+package com.payment.system.customer_service.unit.interfaceadapters.presenters;
 
 import com.payment.system.customer_service.TestUtils;
 import com.payment.system.customer_service.entities.Address;
+import com.payment.system.customer_service.interfaceadapters.presenters.AddressPresenter;
 import com.payment.system.customer_service.interfaceadapters.presenters.dtos.AddressDto;
 import org.junit.jupiter.api.Test;
 
@@ -11,7 +12,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class AddressPresenterTest extends TestUtils {
 
-    private static final String BASE_PATH = "src/test/java/com/payment/system/customer_service/interfaceadapters/presenters/mocks/address/";
+    private static final String BASE_PATH = "src/test/java/com/payment/system/customer_service/unit/interfaceadapters/presenters/mocks/address/";
 
 
     @Test

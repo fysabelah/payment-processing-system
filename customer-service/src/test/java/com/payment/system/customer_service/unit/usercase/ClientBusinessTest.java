@@ -1,7 +1,8 @@
-package com.payment.system.customer_service.usercase;
+package com.payment.system.customer_service.unit.usercase;
 
 import com.payment.system.customer_service.entities.Address;
 import com.payment.system.customer_service.entities.Client;
+import com.payment.system.customer_service.usercase.ClientBusiness;
 import com.payment.system.customer_service.util.MessageUtil;
 import com.payment.system.customer_service.util.exception.ValidationsException;
 import org.junit.jupiter.api.BeforeAll;
