@@ -43,6 +43,11 @@ Este repositório agrupa o desafio final da Pós-Graduação em Arquitetura e De
       }
       ```
     * Com as informações de usuário acima, já seria possível realizar a criação dos tokens.
+3. Serviço de _cartão_: responsável por gerenciamento de os dados e saldo dos cartões.    
+    * Para atender as necessidades dos requisitos do Hackathon, o serviço de cartões possui as seguintes funcionalidades:
+      * Incluir novos cartões;
+      * Consultar saldos dos cartões;
+      * Incluir novas movimentações;
 
 ## Como executar
 
