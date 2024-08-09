@@ -50,6 +50,10 @@ Este repositório agrupa o desafio final da Pós-Graduação em Arquitetura e De
       * Incluir novas movimentações;
     * O usuário **sudosu**, com CPF _57386600054_, possui o cartão com número _5100643631709388_, validade _0625_ e código de verificação _145_.
     * O usuário **adj2**, com CPF _47792626903_, possui o cartão com número _3726388357554552_, validade _0932_ e código de verificação _245_.
+4. Serviço de _pagamento_: responsável por incluir e consultar pagamentos.    
+    * Para atender as necessidades dos requisitos do Hackathon, o serviço de pagamentos possui as seguintes funcionalidades:
+      * Incluir novo pagamento;
+      * Consultar pagamentos por cliente (CPF);
 
 ## Como executar
 
@@ -82,6 +86,10 @@ CUSTOMER_ADDRESS=lb://customer-service
 AUTHENTICATION_ADDRESS=lb://authentication-service
 CARD_ADDRESS=lb://card-service
 PAYMENT_ADDRESS=lb://payment-service
+
+# CARD_FEIGN quando card-service está local : http://localhost:7074
+# CARD_FEIGN quando card-service está em docker : http://card-service:7074
+CARD_FEIGN=http://card-service:7074
 
 JWT_SERVER=authentication-service:7072
 ```
