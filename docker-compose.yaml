@@ -161,7 +161,7 @@ services:
       DATABASE: payments
       DATABASE_USERNAME: ${POSTGRES_DATABASE_USERNAME}
       DATABASE_PASSWORD: ${POSTGRES_DATABASE_PASSWORD}
-      CARD_ADDRESS: ${CARD_ADDRESS}
+      CARD_ADDRESS: http://card-service:7074
     depends_on:
       - server-discovery
       - postgres
