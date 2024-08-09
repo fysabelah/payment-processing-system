@@ -71,6 +71,10 @@ services:
     build:
       context: ./authentication-service
     container_name: authentication-service
+    deploy:
+      resources:
+        limits:
+          memory: 512M
     expose:
       - "7072"
     networks:
@@ -92,6 +96,10 @@ services:
     build:
       context: ./customer-service
     container_name: customer-service
+    deploy:
+      resources:
+        limits:
+          memory: 512M
     expose:
       - "7073"
     networks:
@@ -113,6 +121,10 @@ services:
     build:
       context: ./card-service
     container_name: card-service
+    deploy:
+      resources:
+        limits:
+          memory: 512M
     expose:
       - "7074"
     networks:
@@ -134,6 +146,10 @@ services:
     build:
       context: ./payment-service
     container_name: payment-service
+    deploy:
+      resources:
+        limits:
+          memory: 512M
     expose:
       - "7075"
     networks:
